@@ -1,309 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Engineer Workshop | Welding & Steel Work</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-
+    <title>Nisha Engineer Workshop | Professional Welding Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
+                        'display': ['Orbitron', 'monospace']
+                    },
                     colors: {
-                        primary: '#f97316',
-                        dark: '#0f172a'
+                        steel: {
+                            50: '#f8fafc',
+                            900: '#0f1419',
+                            950: '#020617'
+                        },
+                        primary: '#1e40af',
+                        secondary: '#1e3a8a',
+                        accent: '#3b82f6',
+                        gold: '#eab308'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
                     }
                 }
             }
         }
     </script>
-
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap');
+        
+        * { font-family: 'Inter', sans-serif; }
+        .display-font { font-family: 'Orbitron', monospace; }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #1d4ed8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-padding {
+            @apply py-20 lg:py-32;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0f1419 0%, #1e293b 50%, #111827 100%);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .navbar-scrolled {
+            @apply bg-white/95 backdrop-blur-xl shadow-xl border-b border-white/20;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title { @apply text-4xl sm:text-5xl !important; }
+        }
+    </style>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
 
-<body class="bg-slate-100 text-slate-800 overflow-x-hidden">
+<body class="bg-steel-950 text-white overflow-x-hidden antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full  z-50 transition-all duration-300 backdrop-blur-xl bg-white/5 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 lg:py-6">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-2xl">
+                        <i class="fas fa-wrench text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl lg:text-2xl font-bold gradient-text display-font tracking-tight">Nisha Engineer Workshop</h1>
+                    </div>
+                </div>
 
-    <!-- NAVBAR -->
-    <header class="fixed top-0 w-full bg-white shadow z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-extrabold text-primary">Nisha Engineer Workshop</h1>
-            <nav class="hidden md:flex gap-8 font-semibold">
-                <a href="#home" class="hover:text-primary">Home</a>
-                <a href="#about" class="hover:text-primary">About</a>
-                <a href="#services" class="hover:text-primary">Services</a>
-                <a href="#tool" class="hover:text-primary">Tools</a>
+                <!-- Desktop Menu -->
+                <ul class="hidden lg:flex items-center space-x-8">
+                    <li><a href="#home" class="text-lg font-semibold text-white/90 hover:text-accent transition-colors py-2 relative group">Home<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent to-primary group-hover:w-full transition-all duration-300"></span></a></li>
+                    <li><a href="#about" class="text-lg font-semibold text-white/90 hover:text-accent transition-colors py-2 relative group">About<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent to-primary group-hover:w-full transition-all duration-300"></span></a></li>
+                    <li><a href="#services" class="text-lg font-semibold text-white/90 hover:text-accent transition-colors py-2 relative group">Services<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent to-primary group-hover:w-full transition-all duration-300"></span></a></li>
+                    <li><a href="#gallery" class="text-lg font-semibold text-white/90 hover:text-accent transition-colors py-2 relative group">Gallery<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent to-primary group-hover:w-full transition-all duration-300"></span></a></li>
+                    <li><a href="#contact" class="text-lg font-semibold text-white/90 hover:text-accent transition-colors py-2 relative group">Contact<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent to-primary group-hover:w-full transition-all duration-300"></span></a></li>
+                </ul>
 
-                <a href="#gallery" class="hover:text-primary">Gallery</a>
-                <a href="#contact" class="hover:text-primary">Contact</a>
+                
 
-            </nav>
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden fixed top-0 right-0 w-80 h-full bg-steel-950/95 backdrop-blur-xl shadow-2xl transform translate-x-full transition-transform duration-300 z-50 border-l border-white/10">
+        <div class="p-8 pt-24 flex flex-col space-y-6">
+            <button id="mobile-menu-close" class="self-end p-2 rounded-lg hover:bg-white/10 transition-colors">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <a href="#home" class="py-3 text-lg font-semibold hover:text-accent transition-colors">Home</a>
+            <a href="#about" class="py-3 text-lg font-semibold hover:text-accent transition-colors">About</a>
+            <a href="#services" class="py-3 text-lg font-semibold hover:text-accent transition-colors">Services</a>
+            <a href="#gallery" class="py-3 text-lg font-semibold hover:text-accent transition-colors">Gallery</a>
+            <a href="#contact" class="py-3 text-lg font-semibold hover:text-accent transition-colors">Contact</a>
+            <a href="https://wa.me/919520xxxxxx"  class="mt-6 bg-gradient-to-r from-primary to-accent text-white font-semibold py-4 px-6 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-center">Get Quote</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-24 lg:pt-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        <div class="container mx-auto px-6 lg:px-8 max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+            <!-- Hero Content -->
+            <div data-aos="fade-right" data-aos-duration="1000">
+                <div class="space-y-8 lg:space-y-12 max-w-lg">
+                    <h1 class="hero-title text-4xl sm:text-5xl lg:text-4xl xl:text-4xl font-black leading-tight display-font">
+                        Professional <span class="block gradient-text mb-2">Welder</span> 
+                        Engineering Excellence
+                        
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-slate-300 leading-relaxed max-w-lg">
+                        Industrial gates, grills, sheds, staircases & heavy steel fabrication with <strong>guaranteed quality</strong>.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/919520xxxxxx" target="_blank" class="bg-gradient-to-r from-primary to-accent text-white font-semibold px-10 py-5 rounded-xl shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 text-lg flex items-center gap-3">
+                            <i class="fab fa-whatsapp"></i>
+                            Free Consultation
+                        </a>
+                        <a href="#services" class="border-2 border-white/30 hover:border-accent hover:bg-white/10 font-semibold px-10 py-5 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg backdrop-blur-sm">Our Services</a>
+                    </div>
+                </div>
+            </div>
             
-        </div>
-    </header>
-
-    <!-- HERO -->
-    <section id="home" class="pt-28 bg-dark text-white">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center py-24">
-            <div data-aos="fade-right">
-                <h2 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                    Professional <span class="text-primary">Welder</span><br>Iron & Steel Work
-                </h2>
-                <p class="text-slate-300 mb-8 text-lg">
-                    Gates, grills, sheds, staircases and all types of welding & fabrication work with strong finishing.
-                </p>
-                <a href="https://wa.me/919520xxxxxx" target="_blank"
-                    class="inline-block bg-primary text-dark px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition">
-                    WhatsApp Now
-                </a>
-            </div>
-            <img data-aos="fade-left"
-                src="https://imgs.search.brave.com/rieJJHVgN1tWJQSfiWMrbU5UgfzaOjdIqYhmbf-54Ds/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by93ZWxkZXItcHJv/dGVjdGl2ZS1nZWFy/LWlzLXBlcmZvcm1p/bmctd2VsZGluZy13/b3JrLXdpdGgtc3Bh/cmtzLWZseWluZy1p/c29sYXRlZC1ibGFj/ay1iYWNrZ3JvdW5k/XzQwNzQ3NC0zMDY5/Ny5qcGc_c2VtdD1h/aXNfaHlicmlkJnc9/NzQwJnE9ODA"
-                class="rounded-3xl shadow-2xl" />
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="py-24 bg-white py-28">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            <img data-aos="zoom-in"
-                src="https://imgs.search.brave.com/wvfD8-46mNJ12QuSUP6u1nSIxO3SNn-aigK73EwrayE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2FiLzEz/L2JlL2FiMTNiZWE3/M2U4ZTU2YjNjZjNl/NzY1ZjYzYjBkYzcy/LmpwZw"
-                class="rounded-3xl shadow-lg w-[350px] h-[400px]" />
-            <div data-aos="fade-left">
-                <h3  class="text-5xl md:text-4xl font-black bg-gradient-to-r from-gray-900 to-slate-700 bg-clip-text text-transparent mb-4 ">About Us</h3>
-                <p class="text-slate-600 text-lg leading-relaxed">
-                    Engineer Workshop is based in Rampur, India. We provide expert welding and steel fabrication
-                    services with quality materials and experienced workmanship.
-                </p>
+            <!-- Hero Image -->
+            <div data-aos="fade-left" data-aos-duration="1000" class="relative">
+                <img src="https://imgs.search.brave.com/rieJJHVgN1tWJQSfiWMrbU5UgfzaOjdIqYhmbf-54Ds/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by93ZWxkZXItcHJv/dGVjdGl2ZS1nZWFy/LWlzLXBlcmZvcm1p/bmctd2VsZGluZy13/b3JrLXdpdGgtc3Bh/cmtzLWZseWluZy1p/c29sYXRlZC1ibGFj/ay1iYWNrZ3JvdW5k/XzQwNzQ3NC0zMDY5/Ny5qcGc_c2VtdD1h/aXNfaHlicmlkJnc9/NzQwJnE9ODA" 
+                     alt="Professional Welding" 
+                     class="w-full max-w-md lg:max-w-lg mx-auto rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 object-cover border-4 border-white/20" />
+                <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-primary to-accent rounded-2xl opacity-20 blur-xl animate-pulse"></div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="py-24 bg-gradient-to-b from-slate-100 to-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h3
-                    class="text-5xl md:text-4xl font-black bg-gradient-to-r from-gray-900 to-slate-700 bg-clip-text text-transparent mb-4">
-                    Our Welding Services</h3>
-                <p class="text-[17px] text-gray-600 max-w-2xl mx-auto">Professional welding solutions for gates, motors,
-                    transport, and metal structures</p>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- Gate Welding -->
-                <div data-aos="fade-up" data-aos-delay="100"
-                    class="group bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-white/50 hover:border-blue-200">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                        </svg>
-                    </div>
-
-                    <div>
-                        <h4
-                            class="text-2xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-gray-800 to-slate-700 bg-clip-text">
-                            Gate Welding</h4>
-                        <p class="text-gray-600 leading-relaxed mb-6">Heavy-duty industrial gates, factory entrances,
-                            and security gates.</p>
-                        <ul class="space-y-2 text-sm text-gray-500">
-                            <li>• MS / SS Gates</li>
-                            <li>• Custom designs</li>
-                            <li>• Powder coating & finishing</li>
-                            <li>• MIG / TIG / Arc Welding</li>
-                        </ul>
-                    </div>
+    <!-- About Section -->
+    <section id="about" class="section-padding min-h-screen pt-32 lg:pt-40 ">
+        <div class="container mx-auto px-6 lg:px-8 max-w-6xl">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://imgs.search.brave.com/rieJJHVgN1tWJQSfiWMrbU5UgfzaOjdIqYhmbf-54Ds/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by93ZWxkZXItcHJv/dGVjdGl2ZS1nZWFy/LWlzLXBlcmZvcm1p/bmctd2VsZGluZy13/b3JrLXdpdGgtc3Bh/cmtzLWZseWluZy1p/c29sYXRlZC1ibGFj/ay1iYWNrZ3JvdW5k/XzQwNzQ3NC0zMDY5/Ny5qcGc_c2VtdD1h/aXNfaHlicmlkJnc9/NzQwJnE9ODA" 
+                         alt="Workshop Facility" 
+                         class="w-full rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 object-cover border border-white/10" />
                 </div>
-
-                <!-- Motor / Machinery Welding -->
-                <div data-aos="fade-up" data-aos-delay="200"
-                    class="group bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-white/50 hover:border-red-200">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-br from-red-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 19V6h13M5 19H2v-5h3v5z" />
-                        </svg>
+                <div data-aos="fade-up" data-aos-delay="400">
+                    <div class="space-y-8 max-w-lg">
+                         
+                        <h2 class="text-4xl lg:text-5xl font-black gradient-text display-font">Engineering Perfection</h2>
+                        <p class="text-xl text-slate-300 leading-relaxed">
+                            Rampur's leading welding workshop with 15+ years of industrial expertise. We deliver <strong>precision fabrication</strong> for gates, machinery, and structural steelwork.
+                        </p>
+                        <div class="grid grid-cols-2 gap-8 pt-8">
+                            <div class="text-center p-6 glass-effect rounded-xl hover:scale-105 transition-all duration-300">
+                                <div class="text-3xl font-black text-accent mb-2">500+</div>
+                                <div class="text-slate-400 font-medium">Projects Completed</div>
+                            </div>
+                            <div class="text-center p-6 glass-effect rounded-xl hover:scale-105 transition-all duration-300">
+                                <div class="text-3xl font-black text-accent mb-2">15+</div>
+                                <div class="text-slate-400 font-medium">Years Experience</div>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h4
-                            class="text-2xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-gray-800 to-slate-700 bg-clip-text">
-                            Motor & Machinery Welding</h4>
-                        <p class="text-gray-600 leading-relaxed mb-6">Welding of engine frames, motor parts, machinery,
-                            and heavy equipment.</p>
-                        <ul class="space-y-2 text-sm text-gray-500">
-                            <li>• Engine frames & parts</li>
-                            <li>• Industrial machinery</li>
-                            <li>• MIG / TIG / Arc Welding</li>
-                            <li>• Metal surface preparation & finishing</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Transport Welding -->
-                <div data-aos="fade-up" data-aos-delay="300"
-                    class="group bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-white/50 hover:border-green-200">
-                    <div
-                        class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 13h2l3 8h12l3-8h2M5 6h14l1 5H4l1-5z" />
-                        </svg>
-                    </div>
-
-                    <div>
-                        <h4
-                            class="text-2xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-gray-800 to-slate-700 bg-clip-text">
-                            Transport Welding</h4>
-                        <p class="text-gray-600 leading-relaxed mb-6">Welding of trucks, trailers, containers, and other
-                            transport structures.</p>
-                        <ul class="space-y-2 text-sm text-gray-500">
-                            <li>• Trucks & trailers</li>
-                            <li>• Metal container welding</li>
-                            <li>• MIG / TIG / Arc Welding</li>
-                            <li>• Reinforced structural welding</li>
-                        </ul>
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
-    </section>
-
-    <section id="tool" class="py-24 bg-gradient-to-b from-slate-100 to-white">
-        <!-- Metal / Iron Welding -->
-        <div class="text-center mb-28">
-            <h4
-             class="text-5xl md:text-4xl font-black bg-gradient-to-r from-gray-900 to-slate-700 bg-clip-text text-transparent mb-4"
-                >
-                Metal & Iron Welding</h4>
-            <p class="text-[17px] text-gray-600 max-w-2xl mx-auto">Comprehensive welding services for all metal
-                types and fabrication needs</p>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="400" class="group py-2 col-span-full p-8 rounded-3xl ">
-            <div class="grid sm:grid-cols-2  lg:grid-cols-4 gap-8 text-center">
-                <div class="p-4 hover:-translate-y-2 transition-all duration-500">
-                    <img class="mx-auto h-20 w-20 mb-4 " src="https://cdn-icons-png.flaticon.com/512/2933/2933275.png"
-                        alt="MIG/TIG/Arc Welding" />
-                    <h5 class="font-bold text-lg mb-2">MIG / TIG / Arc Welding</h5>
-                    <p class="text-gray-500 text-sm">Precision welding for all metal items and industrial parts</p>
-                </div>
-                <div class="p-4">
-                    <img class="mx-auto h-20 w-20 mb-4" src="https://cdn-icons-png.flaticon.com/512/2474/2474384.png"
-                        alt="Grinding & Finishing" />
-                    <h5 class="font-bold text-lg mb-2">Grinding & Finishing</h5>
-                    <p class="text-gray-500 text-sm">Smooth and polished welds for strong & clean finishes</p>
-                </div>
-                <div class="p-4">
-                    <img class="mx-auto h-20 w-20 mb-4" src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png"
-                        alt="Material Preparation" />
-                    <h5 class="font-bold text-lg mb-2">Material Prep</h5>
-                    <p class="text-gray-500 text-sm">Metal cutting, shaping & surface preparation for welding</p>
-                </div>
-                <div class="p-4">
-                    <img class="mx-auto h-20 w-20 mb-4" src="https://cdn-icons-png.flaticon.com/512/2900/2900536.png"
-                        alt="Custom Fabrication" />
-                    <h5 class="font-bold text-lg mb-2">Custom Fabrication</h5>
-                    <p class="text-gray-500 text-sm">Tailor-made metal items with professional welding techniques</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- GALLERY -->
-    <section id="gallery" class="py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <h3    class="text-5xl md:text-4xl text-center font-black bg-gradient-to-r from-gray-900 to-slate-700 bg-clip-text text-transparent mb-16">Our Work Gallery</h3>
-            <div class=" flex flex-nowrap gap-10 overflow-x-auto  py-5">
-                <img data-aos="zoom-in"
-                    src="https://imgs.search.brave.com/sOj2rjNqdfMDKI4XeV8BRs_lpInxZofIyzKWeZF8jaw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNDgy/NjQ5ODAyL3Bob3Rv/L2xldHMtZ2V0LXdl/bGRpbmcuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPTNaWEJf/U2pNZkJTWTFXVjN3/aEVpYUdhb1JESWlE/ekp1OEVTRnJwT0la/NDg9"
-                    class="rounded-2xl shadow h-64 w-50 " />
-                <img data-aos="zoom-in"
-                    src="https://media.gettyimages.com/id/1266656212/photo/blue-collar-workers-metal-welder.jpg?s=612x612&w=0&k=20&c=mVqCJAELzF5UQR1K7qRj8it0BdKDpkFCtHEbeCIaE9s="
-                    class="rounded-2xl shadow h-64 w-50" />
-                <img data-aos="zoom-in"
-                    src="https://media.gettyimages.com/id/1461607594/photo/metal-workers-using-a-grinder.jpg?s=612x612&w=0&k=20&c=2PemfpsPxcB2-vtnUljp1uHa1kXVKdTIz2DGVD0W1GY="
-                    class="rounded-2xl shadow h-64 w-50" />
-                <img data-aos="zoom-in"
-                    src="https://media.gettyimages.com/id/1379184179/photo/metal-worker-using-a-grinder.jpg?s=612x612&w=0&k=20&c=9UuFqwFHO9eGqHdfGdK5NtpW7dI0z4zSNrAlL1xX-i4="
-                    class="rounded-2xl shadow h-64 w-50" />
-                <img data-aos="zoom-in"
-                    src="https://media.gettyimages.com/id/1037604530/photo/heavy-industry-worker-cutting-steel-with-an-angle-grinder.jpg?s=612x612&w=0&k=20&c=b2ck-P_ztwQSm7Ket4D9CW5MS5IVVYdkNCk9Eot3nn0="
-                    class="rounded-2xl shadow h-64 w-50" />
-                <img data-aos="zoom-in"
-                    src="https://media.gettyimages.com/id/1401764586/photo/computer-numerical-control-for-cutting-and-weld-steel-structure-at-industrial-manufacturer.jpg?s=612x612&w=0&k=20&c=3kVBRkqE2U6LtB-e1PuQPPIrLUMEsAks9KclVLBTOnE="
-                    class="rounded-2xl shadow h-64 w-50" />
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-steel-900/50 min-h-screen pt-32 lg:pt-25">
+        <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
+            <div class="text-center mb-20 lg:mb-4" data-aos="fade-down">
+                
+                <h2 class="text-4xl lg:text-5xl font-black gradient-text display-font mb-4">Professional Services</h2>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto">Complete welding solutions for industrial applications</p>
             </div>
-        </div>
-    </section>
 
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                <!-- Service 1 -->
+                <div data-aos="fade-up" data-aos-delay="100" class="glass-effect group p-10 rounded-2xl hover:shadow-2xl hover:shadow-accent/20 hover:-translate-y-3 transition-all duration-500 cursor-pointer border border-white/10 hover:border-accent/50">
+                    <div class="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                        <i class="fas fa-door-closed text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-center text-white mb-6 group-hover:text-accent transition-colors">Industrial Gates</h3>
+                    <ul class="space-y-3 text-slate-300 mb-8 text-lg">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-accent"></i>MS/SS Fabrication</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-accent"></i>Custom Designs</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-accent"></i>MIG/TIG/Arc Welding</li>
+                    </ul>
+                </div>
 
+                <!-- Service 2 -->
+                <div data-aos="fade-up" data-aos-delay="200" class="glass-effect group p-10 rounded-2xl hover:shadow-2xl hover:shadow-accent/20 hover:-translate-y-3 transition-all duration-500 cursor-pointer border border-white/10 hover:border-accent/50">
+                    <div class="w-20 h-20 bg-gradient-to-br from-secondary to-primary rounded-xl flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                        <i class="fas fa-cogs text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-center text-white mb-6 group-hover:text-accent transition-colors">Machinery Repair</h3>
+                    <ul class="space-y-3 text-slate-300 mb-8 text-lg">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-accent"></i>Engine Components</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-accent"></i>Heavy Equipment</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-accent"></i>Structural Repairs</li>
+                    </ul>
+                </div>
 
-
-
-    <!-- CONTACT -->
-    <section id="contact" class="py-20 bg-gradient-to-br from-dark via-slate-900 to-black text-white relative">
-        <div
-            class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1581091215367-59ab6bdfc1c0')] bg-cover">
-        </div>
-        <div class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-
-            <!-- Contact Info -->
-            <div data-aos="fade-right">
-                <h3 class="text-5xl font-extrabold mb-6">Let’s Build With Steel</h3>
-                <p class="text-slate-300 mb-8 text-lg">
-                    Hasan Engineer Workshop – Iron & Steel Building Experts in Rampur, India. Call or WhatsApp us for
-                    strong and reliable steel construction.
-                </p>
-                <div class="space-y-4 text-lg">
-                    <p>📍 <span class="font-semibold">Rampur, India</span></p>
-                    <p>📞 <span class="font-semibold">9520XXXXXX</span></p>
-                    <p>🕒 Mon – Sun | 9 AM – 6 PM</p>
+                <!-- Service 3 -->
+                <div data-aos="fade-up" data-aos-delay="300" class="glass-effect group p-10 rounded-2xl hover:shadow-2xl hover:shadow-accent/20 hover:-translate-y-3 transition-all duration-500 cursor-pointer border border-white/10 hover:border-accent/50">
+                    <div class="w-20 h-20 bg-gradient-to-br from-accent to-gold rounded-xl flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                        <i class="fas fa-truck text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-center text-white mb-6 group-hover:text-accent transition-colors">Transport Welding</h3>
+                    <ul class="space-y-3 text-slate-300 mb-8 text-lg">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-accent"></i>Trailer Fabrication</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-accent"></i>Container Welding</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-accent"></i>Vehicle Repairs</li>
+                    </ul>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Contact Card -->
-            <div data-aos="fade-left" class="  backdrop-blur-xl rounded-3xl p-10  ">
-                <h4 class="text-3xl font-bold mb-6 text-center">Quick Contact</h4>
-                <form class="space-y-5">
-                    <input type="text" placeholder="Your Name" class="w-full p-4 rounded-xl bg-white/80 text-black" />
-                    <input type="tel" placeholder="Phone Number" class="w-full p-4 rounded-xl bg-white/80 text-black" />
-                    <textarea placeholder="Your Requirement"
-                        class="w-full p-4 rounded-xl bg-white/80 text-black"></textarea>
-                    <button type="button"
-                        class="w-full bg-primary text-dark py-4 rounded-xl font-bold text-lg hover:scale-105 transition">
-                        Send Enquiry
-                    </button>
-                </form>
-
+    <!-- Gallery Section -->
+    <section id="gallery" class="section-padding bg-steel-900/30 min-h-screen pt-32 lg:pt-25">
+        <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
+            <div class="text-center mb-20 lg:mb-12 " data-aos="fade-down">
+                <h2 class="text-4xl lg:text-5xl font-black gradient-text display-font mb-6">Work Gallery</h2>
+                <p class="text-xl text-slate-300 max-w-2xl mx-auto">Quality work speaks for itself</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                <div data-aos="zoom-in" data-aos-delay="100" class="group relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-700 cursor-pointer">
+                    <img alt="Project 1" src="https://imgs.search.brave.com/sOj2rjNqdfMDKI4XeV8BRs_lpInxZofIyzKWeZF8jaw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNDgy/NjQ5ODAyL3Bob3Rv/L2xldHMtZ2V0LXdl/bGRpbmcuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPTNaWEJf/U2pNZkJTWTFXVjN3/aEVpYUdhb1JESWlE/ekp1OEVTRnJwT0la/NDg9" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-8">
+                        <div >
+                            <h4 class="text-xl font-bold mb-2">Industrial Gate</h4>
+                            <p class="text-slate-400">Heavy-duty MS fabrication</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat for other gallery items with different images -->
+                <div data-aos="zoom-in" data-aos-delay="100" class="group relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-700 cursor-pointer">
+                    <img alt="Project 2" src="https://media.gettyimages.com/id/1266656212/photo/blue-collar-workers-metal-welder.jpg?s=612x612&w=0&k=20&c=mVqCJAELzF5UQR1K7qRj8it0BdKDpkFCtHEbeCIaE9s=" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-8">
+                        <div >
+                            <h4 class="text-xl font-bold mb-2">Industrial Gate</h4>
+                            <p class="text-slate-400">Heavy-duty MS fabrication</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="100" class="group relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-700 cursor-pointer">
+                    <img alt="project 3" src="https://media.gettyimages.com/id/1461607594/photo/metal-workers-using-a-grinder.jpg?s=612x612&w=0&k=20&c=2PemfpsPxcB2-vtnUljp1uHa1kXVKdTIz2DGVD0W1GY=" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-8">
+                        <div >
+                            <h4 class="text-xl font-bold mb-2">Industrial Gate</h4>
+                            <p class="text-slate-400">Heavy-duty MS fabrication</p>
+                        </div>
+                    </div>
+                </div>
+                  
+                  
             </div>
         </div>
     </section>
 
-    <footer class="bg-black text-slate-400 text-center py-6">
-        © 2026 Nisha Engineer Workshop
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-gradient-to-b from-steel-950 to-black min-h-screen pt-32 lg:pt-25">
+        <div class="container mx-auto px-6 lg:px-8 max-w-6xl">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+                <!-- Contact Info -->
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    <h2 class="text-4xl lg:text-5xl font-black gradient-text display-font mb-4">Get Your Quote Today</h2>
+                    <p class="text-xl text-slate-300 mb-4 leading-relaxed max-w-lg">
+                        Ready to start your project? Contact Rampur's most trusted welding experts for a <strong class="gradient-text">free consultation</strong>.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 p-4 glass-effect rounded-xl hover:scale-105 transition-all duration-300">
+                            <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Rampur, Uttar Pradesh</h4>
+                                <p class="text-slate-400">Local & Reliable Service</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 glass-effect rounded-xl hover:scale-105 transition-all duration-300">
+                            <div class="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-phone text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">+91 9520XXXXXX</h4>
+                                <p class="text-slate-400">Call Anytime</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div data-aos="fade-left" data-aos-duration="1000" class=" rounded-3xl p-10 lg:p-4   shadow-2xl hover:shadow-3xl transition-all duration-500 border border-white/10 bg-steel-900/50 backdrop-blur-xl">
+                    <form class="space-y-6">
+                        <div>
+                            <input type="text" placeholder="Full Name *" required 
+                                   class="w-full p-5 lg:p-6 rounded-2xl bg-white/5 text-white placeholder-slate-400 border border-white/20 focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/20 transition-all duration-300 text-lg backdrop-blur-sm" />
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="Phone Number *" required 
+                                   class="w-full p-5 lg:p-6 rounded-2xl bg-white/5 text-white placeholder-slate-400 border border-white/20 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all duration-300 text-lg backdrop-blur-sm" />
+                        </div>
+                        <div>
+                            <textarea placeholder="Project Requirements *" rows="5" required 
+                                      class="w-full h-20 p-5 lg:p-6 rounded-2xl bg-white/5 text-white placeholder-slate-400 border border-white/20 focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/20 transition-all duration-300 text-lg resize-vertical backdrop-blur-sm"></textarea>
+                        </div>
+                        <button type="submit" class="w-full  bg-gradient-to-r from-primary to-accent text-white font-bold py-6 lg:py-5 rounded-2xl shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 text-xl backdrop-blur-sm border border-white/20">
+                            <i class="fas fa-paper-plane mr-3"></i>Send Enquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-steel-950 border-t border-white/10">
+        <div class="container mx-auto px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-3 gap-12 lg:gap-16 text-center md:text-left">
+                <div>
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center">
+                            <i class="fas fa-wrench text-white"></i>
+                        </div>
+                        <div class="display-font">
+                            <h3 class="text-2xl font-black gradient-text">Nisha Engineer Workshop</h3>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6 text-white">Services</h4>
+                    <ul class="space-y-3 text-slate-400">
+                        <li><a href="#" class="hover:text-accent transition-colors">Industrial Gates</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Machinery Repair</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Transport Welding</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6 text-white">Contact</h4>
+                    <div class="space-y-3 text-slate-400">
+                        <p>+91 9520XXXXXX</p>
+                        <p>Rampur, Uttar Pradesh</p>
+                        <div class="flex justify-center md:justify-start gap-4 mt-4 pt-4 border-t border-white/10">
+                            <a href="#" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-accent hover:text-white transition-all duration-300">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300">
+                                <i class="fas fa-phone"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-16 pt-12 text-center">
+                <p class="text-slate-500">&copy; 2026 Nisha Engineer Workshop. All rights reserved. | Rampur's Premier Welding Experts</p>
+            </div>
+        </div>
     </footer>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/9195xxxxxxx"
-        class="fixed bottom-6 right-6 bg-green-500 p-4 rounded-full shadow-2xl animate-bounce">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="w-8 h-8" />
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919520xxxxxx" 
+       class="fixed bottom-8 right-8 w-16 h-16 lg:w-13 lg:h-13 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-2xl hover:shadow-green-500/50 hover:scale-110 hover:rotate-12 transition-all duration-300 z-50 border-4 border-white/20 backdrop-blur-sm">
+        <i class="fab fa-whatsapp text-xl lg:text-2xl text-white font-bold"></i>
     </a>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
 
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+        });
+
+        mobileClose.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu
+                mobileMenu.classList.add('translate-x-full');
+            });
+        });
+
+        // Form submission (demo)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! We will contact you within 24 hours.');
+        });
+    </script>
 </body>
-
 </html>
